@@ -3,6 +3,9 @@
 
 .excalidraw {
   .App-toolbar {
+    padding-left: 4px;
+    padding-right: 20px;
+
     &.zen-mode {
       .ToolIcon__keybinding,
       .HintViewer {

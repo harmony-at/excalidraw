@@ -46,6 +46,12 @@ import {
   laserPointerToolIcon,
   OpenAIIcon,
   MagicIcon,
+  RectangleIcon,
+  DiamondIcon,
+  EllipseIcon,
+  ArrowIcon,
+  LineIcon,
+  downArrowIcon,
 } from "./icons";
 import { KEYS } from "../keys";
 import { useTunnels } from "../context/tunnels";
@@ -251,11 +257,13 @@ export const ShapesSwitcher = ({
   appState,
   app,
   UIOptions,
+  renderAction,
 }: {
   activeTool: UIAppState["activeTool"];
   appState: UIAppState;
   app: AppClassProperties;
   UIOptions: AppProps["UIOptions"];
+  renderAction?: ActionManager["renderAction"];
 }) => {
   const [isExtraToolsMenuOpen, setIsExtraToolsMenuOpen] = useState(false);
 
@@ -318,7 +326,113 @@ export const ShapesSwitcher = ({
       })}
       <div className="App-toolbar__divider" />
 
+      {/* Shape menu */}
       <DropdownMenu open={isExtraToolsMenuOpen}>
+        <DropdownMenu.Trigger
+          className={clsx("App-toolbar__extra-tools-trigger", {
+            "App-toolbar__extra-tools-trigger--selected":
+              frameToolSelected ||
+              embeddableToolSelected ||
+              (laserToolSelected && !app.props.isCollaborating),
+          })}
+          onToggle={() => setIsExtraToolsMenuOpen(!isExtraToolsMenuOpen)}
+          title={"List shape"}
+        >
+          {extraToolsIcon}
+          <div
+            style={{
+              position: "absolute",
+              bottom: 8,
+              right: 115,
+            }}
+          >
+            {downArrowIcon}
+          </div>
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Content
+          onClickOutside={() => setIsExtraToolsMenuOpen(false)}
+          onSelect={() => setIsExtraToolsMenuOpen(false)}
+          className="App-toolbar__extra-tools-dropdown"
+        >
+          <div style={{ margin: "6px 0", fontSize: 14, fontWeight: 600 }}>
+            List shape
+          </div>
+          <DropdownMenu.Item
+            onSelect={() => app.setActiveTool({ type: "rectangle" })}
+            icon={RectangleIcon}
+            data-testid="rectangle-icon"
+            onPointerDown={({ pointerType }) => {
+              if (!appState.penDetected && pointerType === "pen") {
+                app.togglePenMode(true);
+              }
+            }}
+          >
+            Rectangle
+          </DropdownMenu.Item>
+          <DropdownMenu.Item
+            onSelect={() => app.setActiveTool({ type: "diamond" })}
+            icon={DiamondIcon}
+            data-testid="diamond-icon"
+            onPointerDown={({ pointerType }) => {
+              if (!appState.penDetected && pointerType === "pen") {
+                app.togglePenMode(true);
+              }
+            }}
+          >
+            Diamond
+          </DropdownMenu.Item>
+          <DropdownMenu.Item
+            onSelect={() => app.setActiveTool({ type: "ellipse" })}
+            icon={EllipseIcon}
+            data-testid="ellipse-icon"
+            onPointerDown={({ pointerType }) => {
+              if (!appState.penDetected && pointerType === "pen") {
+                app.togglePenMode(true);
+              }
+            }}
+          >
+            Ellipse
+          </DropdownMenu.Item>
+          <DropdownMenu.Item
+            onSelect={() => app.setActiveTool({ type: "arrow" })}
+            icon={ArrowIcon}
+            data-testid="arrow-icon"
+            onPointerDown={({ pointerType }) => {
+              if (!appState.penDetected && pointerType === "pen") {
+                app.togglePenMode(true);
+              }
+            }}
+          >
+            Arrow
+          </DropdownMenu.Item>
+          <DropdownMenu.Item
+            onSelect={() => app.setActiveTool({ type: "line" })}
+            icon={LineIcon}
+            data-testid="line-icon"
+            onPointerDown={({ pointerType }) => {
+              if (!appState.penDetected && pointerType === "pen") {
+                app.togglePenMode(true);
+              }
+            }}
+          >
+            Line
+          </DropdownMenu.Item>
+        </DropdownMenu.Content>
+      </DropdownMenu>
+
+      <div className="App-toolbar__divider" />
+
+      <div className={`undo-redo-buttons`}>
+        <div className="undo-button-container">
+          <Tooltip label={t("buttons.undo")}>{renderAction?.("undo")}</Tooltip>
+        </div>
+        <div className="redo-button-container">
+          <Tooltip label={t("buttons.redo")}> {renderAction?.("redo")}</Tooltip>
+        </div>
+      </div>
+
+      {/* Extra tools menu */}
+      {/* <DropdownMenu open={isExtraToolsMenuOpen}>
         <DropdownMenu.Trigger
           className={clsx("App-toolbar__extra-tools-trigger", {
             "App-toolbar__extra-tools-trigger--selected":
@@ -422,7 +536,7 @@ export const ShapesSwitcher = ({
             </>
           )}
         </DropdownMenu.Content>
-      </DropdownMenu>
+      </DropdownMenu> */}
     </>
   );
 };

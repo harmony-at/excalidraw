@@ -11,12 +11,12 @@ import {
   DiamondIcon,
   EllipseIcon,
   EraserIcon,
-  FreedrawIcon,
+  FreedrawIconNova,
   ImageIcon,
   LineIcon,
   RectangleIcon,
-  SelectionIcon,
-  TextIcon,
+  SelectionIconNova,
+  TextIconNova,
 } from "./components/icons";
 import { getElementAbsoluteCoords } from "./element";
 import { shouldTestInside } from "./element/collision";
@@ -24,58 +24,59 @@ import type { ElementsMap, ExcalidrawElement } from "./element/types";
 import { KEYS } from "./keys";
 import { ShapeCache } from "./scene/ShapeCache";
 
+
 export const SHAPES = [
   {
-    icon: SelectionIcon,
+    icon: SelectionIconNova,
     value: "selection",
     key: KEYS.V,
     numericKey: KEYS["1"],
     fillable: true,
   },
+  // {
+  //   icon: RectangleIcon,
+  //   value: "rectangle",
+  //   key: KEYS.R,
+  //   numericKey: KEYS["2"],
+  //   fillable: true,
+  // },
+  // {
+  //   icon: DiamondIcon,
+  //   value: "diamond",
+  //   key: KEYS.D,
+  //   numericKey: KEYS["3"],
+  //   fillable: true,
+  // },
+  // {
+  //   icon: EllipseIcon,
+  //   value: "ellipse",
+  //   key: KEYS.O,
+  //   numericKey: KEYS["4"],
+  //   fillable: true,
+  // },
+  // {
+  //   icon: ArrowIcon,
+  //   value: "arrow",
+  //   key: KEYS.A,
+  //   numericKey: KEYS["5"],
+  //   fillable: true,
+  // },
+  // {
+  //   icon: LineIcon,
+  //   value: "line",
+  //   key: KEYS.L,
+  //   numericKey: KEYS["6"],
+  //   fillable: true,
+  // },
   {
-    icon: RectangleIcon,
-    value: "rectangle",
-    key: KEYS.R,
-    numericKey: KEYS["2"],
-    fillable: true,
-  },
-  {
-    icon: DiamondIcon,
-    value: "diamond",
-    key: KEYS.D,
-    numericKey: KEYS["3"],
-    fillable: true,
-  },
-  {
-    icon: EllipseIcon,
-    value: "ellipse",
-    key: KEYS.O,
-    numericKey: KEYS["4"],
-    fillable: true,
-  },
-  {
-    icon: ArrowIcon,
-    value: "arrow",
-    key: KEYS.A,
-    numericKey: KEYS["5"],
-    fillable: true,
-  },
-  {
-    icon: LineIcon,
-    value: "line",
-    key: KEYS.L,
-    numericKey: KEYS["6"],
-    fillable: true,
-  },
-  {
-    icon: FreedrawIcon,
+    icon: FreedrawIconNova,
     value: "freedraw",
     key: [KEYS.P, KEYS.X],
     numericKey: KEYS["7"],
     fillable: false,
   },
   {
-    icon: TextIcon,
+    icon: TextIconNova,
     value: "text",
     key: KEYS.T,
     numericKey: KEYS["8"],

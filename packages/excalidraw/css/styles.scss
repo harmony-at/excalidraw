@@ -327,8 +327,8 @@ body.excalidraw-cursor-resize * {
   }
 
   .App-menu_top {
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-gap: 2rem;
+    // grid-template-columns: 1fr 2fr 1fr;
+    // grid-gap: 2rem;
     align-items: flex-start;
     cursor: default;
     pointer-events: none !important;
@@ -338,18 +338,18 @@ body.excalidraw-cursor-resize * {
     }
 
     @media (min-width: 1536px) {
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-gap: 3rem;
+      // grid-template-columns: 1fr 1fr 1fr;
+      // grid-gap: 3rem;
     }
   }
 
-  .App-menu_top > *:first-child {
-    justify-self: flex-start;
-  }
+  // .App-menu_top > *:first-child {
+  //   justify-self: flex-start;
+  // }
 
-  .App-menu_top > *:last-child {
-    justify-self: flex-end;
-  }
+  // .App-menu_top > *:last-child {
+  //   justify-self: flex-end;
+  // }
 
   .App-menu_bottom {
     position: absolute;

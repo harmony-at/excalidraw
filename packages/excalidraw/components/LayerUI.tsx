@@ -249,10 +249,10 @@ const LayerUI = ({
     return (
       <FixedSideContainer side="top">
         <div className="App-menu App-menu_top">
-          <Stack.Col gap={6} className={clsx("App-menu_top__left")}>
+          {/* <Stack.Col gap={6} className={clsx("App-menu_top__left")}>
             {renderCanvasActions()}
             {shouldRenderSelectedShapeActions && renderSelectedShapeActions()}
-          </Stack.Col>
+          </Stack.Col> */}
           {!appState.viewModeEnabled && (
             <Section heading="shapes" className="shapes-section">
               {(heading: React.ReactNode) => (
@@ -268,7 +268,7 @@ const LayerUI = ({
                       })}
                     >
                       <Island
-                        padding={1}
+                        padding={0.5}
                         className={clsx("App-toolbar", {
                           "zen-mode": appState.zenModeEnabled,
                         })}
@@ -288,13 +288,13 @@ const LayerUI = ({
                             title={t("toolBar.penMode")}
                             penDetected={appState.penDetected}
                           />
-                          <LockButton
+                          {/* <LockButton
                             checked={appState.activeTool.locked}
                             onChange={onLockToggle}
                             title={t("toolBar.lock")}
                           />
 
-                          <div className="App-toolbar__divider" />
+                          <div className="App-toolbar__divider" /> */}
 
                           <HandButton
                             checked={isHandToolActive(appState)}
@@ -308,6 +308,7 @@ const LayerUI = ({
                             activeTool={appState.activeTool}
                             UIOptions={UIOptions}
                             app={app}
+                            renderAction={actionManager.renderAction}
                           />
                         </Stack.Row>
                       </Island>
@@ -337,7 +338,7 @@ const LayerUI = ({
               )}
             </Section>
           )}
-          <div
+          {/* <div
             className={clsx(
               "layer-ui__wrapper__top-right zen-mode-transition",
               {
@@ -367,7 +368,7 @@ const LayerUI = ({
                 renderCustomStats={renderCustomStats}
               />
             )}
-          </div>
+          </div> */}
         </div>
       </FixedSideContainer>
     );
@@ -550,12 +551,12 @@ const LayerUI = ({
           >
             {renderWelcomeScreen && <tunnels.WelcomeScreenCenterTunnel.Out />}
             {renderFixedSideContainer()}
-            <Footer
+            {/* <Footer
               appState={appState}
               actionManager={actionManager}
               showExitZenModeBtn={showExitZenModeBtn}
               renderWelcomeScreen={renderWelcomeScreen}
-            />
+            /> */}
             {appState.scrolledOutside && (
               <button
                 type="button"

@@ -1,5 +1,5 @@
 import type { Action, ActionResult } from "./types";
-import { UndoIcon, RedoIcon } from "../components/icons";
+import { UndoIcon, RedoIcon, UndoIconNova } from "../components/icons";
 import { ToolButton } from "../components/ToolButton";
 import { t } from "../i18n";
 import type { History } from "../history";
@@ -12,6 +12,7 @@ import type { SceneElementsMap } from "../element/types";
 import type { Store } from "../store";
 import { StoreAction } from "../store";
 import { useEmitter } from "../hooks/useEmitter";
+import React from "react";
 
 const writeData = (
   appState: Readonly<AppState>,
@@ -47,7 +48,7 @@ type ActionCreator = (history: History, store: Store) => Action;
 export const createUndoAction: ActionCreator = (history, store) => ({
   name: "undo",
   label: "buttons.undo",
-  icon: UndoIcon,
+  icon: UndoIconNova,
   trackEvent: { category: "history" },
   viewMode: false,
   perform: (elements, appState) =>
@@ -74,7 +75,7 @@ export const createUndoAction: ActionCreator = (history, store) => ({
     return (
       <ToolButton
         type="button"
-        icon={UndoIcon}
+        icon={UndoIconNova}
         aria-label={t("buttons.undo")}
         onClick={updateData}
         size={data?.size || "medium"}
@@ -88,7 +89,7 @@ export const createUndoAction: ActionCreator = (history, store) => ({
 export const createRedoAction: ActionCreator = (history, store) => ({
   name: "redo",
   label: "buttons.redo",
-  icon: RedoIcon,
+  icon: UndoIconNova,
   trackEvent: { category: "history" },
   viewMode: false,
   perform: (elements, appState) =>
@@ -116,7 +117,11 @@ export const createRedoAction: ActionCreator = (history, store) => ({
     return (
       <ToolButton
         type="button"
-        icon={RedoIcon}
+        icon={
+          <div style={{ transform: "rotate(180deg) scaleY(-1)" }}>
+            {UndoIconNova}
+          </div>
+        }
         aria-label={t("buttons.redo")}
         onClick={updateData}
         size={data?.size || "medium"}

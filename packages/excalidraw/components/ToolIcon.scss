@@ -172,8 +172,8 @@
 
   .App-toolbar-container {
     .ToolIcon__icon {
-      width: var(--lg-button-size);
-      height: var(--lg-button-size);
+      // width: var(--lg-button-size);
+      // height: var(--lg-button-size);
 
       @media screen and (max-width: 450px) {
         width: 1.8rem;
