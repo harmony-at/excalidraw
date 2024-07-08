@@ -3,8 +3,8 @@ const util = require("util");
 const exec = util.promisify(require("child_process").exec);
 const updateChangelog = require("./updateChangelog");
 
-const excalidrawDir = `${__dirname}/../packages/excalidraw/packages/excalidraw`;
-const excalidrawPackage = `${excalidrawDir}/package.json`;
+const excalidrawDir = `${__dirname}/../packages/excalidraw/excalidraw`;
+const excalidrawPackage = 'E:/harmonyAT/novacde/excalidraw/packages/excalidraw/package.json';
 
 const updatePackageVersion = (nextVersion) => {
   const pkg = require(excalidrawPackage);
