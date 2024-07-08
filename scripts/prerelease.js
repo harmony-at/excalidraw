@@ -28,8 +28,8 @@ const prerelease = async (nextVersion) => {
     process.exit(1);
   }
 };
-
-const nextVersion = process.argv.slice(2)[0];
+ console.log('----------', process.argv);
+const nextVersion = 'v0.17.4';
 if (!nextVersion) {
   console.error("Pass the next version to release!");
   process.exit(1);
