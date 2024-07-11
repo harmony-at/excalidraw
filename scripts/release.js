@@ -1,7 +1,7 @@
 const { execSync } = require("child_process");
 
-const excalidrawDir = 'E:/harmonyAT/novacde/excalidraw/packages/excalidraw';
-const excalidrawPackage = 'E:/harmonyAT/novacde/excalidraw/packages/excalidraw/package.json';
+const excalidrawDir = `${__dirname}/../packages/excalidraw`;
+const excalidrawPackage = `${excalidrawDir}/package.json`;
 const pkg = require(excalidrawPackage);
 
 console.log(excalidrawDir);
