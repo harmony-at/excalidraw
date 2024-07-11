@@ -4,7 +4,7 @@ const excalidrawDir = `${__dirname}/../packages/excalidraw`;
 const excalidrawPackage = 'E:/harmonyAT/novacde/excalidraw/packages/excalidraw/package.json';
 const pkg = require(excalidrawPackage);
 
-console.log(111111);
+console.log(excalidrawDir);
 const publish = () => {
   try {
     execSync(`yarn  --frozen-lockfile`);
